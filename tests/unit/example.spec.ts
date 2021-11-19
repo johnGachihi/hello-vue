@@ -1,12 +1,12 @@
 import { shallowMount } from "@vue/test-utils";
-import HelloWorld from "@/components/HelloWorld.vue";
+import AppBar from "@/components/AppBar.vue";
 
 describe("HelloWorld.vue", () => {
-  it("renders props.msg when passed", () => {
-    const msg = "new message";
-    const wrapper = shallowMount(HelloWorld, {
-      props: { msg },
+  it("renders props.title when passed", () => {
+    const title = "Page Title";
+    const wrapper = shallowMount(AppBar, {
+      props: { title },
     });
-    expect(wrapper.text()).toMatch(msg);
+    expect(wrapper.text()).toMatch(title);
   });
 });
