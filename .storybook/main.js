@@ -1,20 +1,18 @@
 const TsconfigPathsPlugin = require("tsconfig-paths-webpack-plugin")
+const { mergeConfig } = require("vite")
 
 module.exports = {
   stories: ["../src/**/*.stories.mdx", "../src/**/*.stories.@(js|jsx|ts|tsx)"],
   addons: [
     "@storybook/addon-links",
     "@storybook/addon-essentials",
-    "@storybook/preset-scss",
   ],
 
-  webpackFinal: (config) => {
-    config.resolve.plugins = [
-      ...(config.resolve.plugins || []),
-      new TsconfigPathsPlugin({
-        extensions: config.resolve.extensions,
-      }),
-    ];
-    return config;
+  viteFinal(config) {
+    return mergeConfig(config, {
+      resolve: { alias: { "@": "/src" } }
+    })
   },
+
+  core: { builder: "@storybook/builder-vite" }
 };

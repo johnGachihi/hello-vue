@@ -10,6 +10,8 @@
   <main>
     <SearchBar :on-search="loadUser" />
     <GitHubUser v-if="user" :git-hub-user="user" />
+
+    <img src="@/assets/logo.png" />
   </main>
 </template>
 
